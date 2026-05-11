@@ -34,7 +34,7 @@
     "verify": "pnpm format:check && pnpm scripts:lint && pnpm verify:backend && pnpm verify:frontend"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.5.3",
+    "@commitlint/cli": "21.0.0",
     "@commitlint/config-conventional": "20.5.3",
     "@eslint/js": "10.0.1",
     "@hey-api/openapi-ts": "0.97.1",
