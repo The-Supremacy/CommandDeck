@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CommandDeck.Host\CommandDeck.Host.csproj" />
+    <ProjectReference Include="..\..\src\modules\CommandDeck.Identity.Contracts\CommandDeck.Identity.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    <PackageReference Include="NSubstitute" />
+  </ItemGroup>
+</Project>

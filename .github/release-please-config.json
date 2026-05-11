@@ -1,0 +1,9 @@
+{
+  "packages": {
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "package-name": "commanddeck",
+      "release-type": "simple"
+    }
+  }
+}

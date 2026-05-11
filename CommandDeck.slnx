@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/orchestration/">
+    <Project Path="orchestration/CommandDeck.Orchestration/CommandDeck.Orchestration.csproj" />
+  </Folder>
+  <Folder Name="/server/" />
+  <Folder Name="/server/src/">
+    <Project Path="server/src/CommandDeck.Host/CommandDeck.Host.csproj" />
+    <Project Path="server/src/CommandDeck.Migrator/CommandDeck.Migrator.csproj" />
+    <Project Path="server/src/CommandDeck.Persistence/CommandDeck.Persistence.csproj" />
+    <Project Path="server/src/CommandDeck.ServiceDefaults/CommandDeck.ServiceDefaults.csproj" />
+    <Project Path="server/src/CommandDeck.SharedKernel/CommandDeck.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/server/src/modules/">
+    <Project Path="server/src/modules/CommandDeck.Identity.Contracts/CommandDeck.Identity.Contracts.csproj" />
+    <Project Path="server/src/modules/CommandDeck.Identity.Infrastructure/CommandDeck.Identity.Infrastructure.csproj" />
+    <Project Path="server/src/modules/CommandDeck.Identity/CommandDeck.Identity.csproj" />
+  </Folder>
+  <Folder Name="/server/tests/">
+    <Project Path="server/tests/CommandDeck.Host.Tests/CommandDeck.Host.Tests.csproj" />
+  </Folder>
+  <Folder Name="/server/tests/modules/">
+    <Project Path="server/tests/modules/CommandDeck.Identity.Infrastructure.Tests/CommandDeck.Identity.Infrastructure.Tests.csproj" />
+    <Project Path="server/tests/modules/CommandDeck.Identity.Tests/CommandDeck.Identity.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\CommandDeck.Persistence\CommandDeck.Persistence.csproj" />
+    <ProjectReference Include="..\..\..\src\modules\CommandDeck.Identity.Infrastructure\CommandDeck.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\src\modules\CommandDeck.Identity\CommandDeck.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+  </ItemGroup>
+</Project>
