@@ -33,7 +33,6 @@ public sealed class HostApplicationFactory(
             services.RemoveAll<IApplicationAccessRepository>();
             services.RemoveAll(typeof(IPipelineBehavior<,>));
             services.RemoveAll<IPipelineBehavior<ResolveCurrentUserCommand, CurrentUserContext>>();
-            services.RemoveAll<IPipelineBehavior<GrantInitialApplicationAccessCommand, bool>>();
             services.AddSingleton<HostTestIdentityContext>();
             services.AddSingleton<ILocalUserRepository>(services => services.GetRequiredService<HostTestIdentityContext>());
             services.AddSingleton<IApplicationAccessRepository>(services => services.GetRequiredService<HostTestIdentityContext>());

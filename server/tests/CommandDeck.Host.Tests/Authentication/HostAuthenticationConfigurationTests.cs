@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using System.Security.Claims;
 using CommandDeck.Host.Authentication;
 using CommandDeck.Host.Configuration;
 using Shouldly;
@@ -39,6 +41,33 @@ public sealed class HostAuthenticationConfigurationTests
         oidcOptions.SignedOutCallbackPath.ToString().ShouldBe("/auth/signed-out");
         oidcOptions.UsePkce.ShouldBeTrue();
         oidcOptions.SaveTokens.ShouldBeTrue();
+    }
+
+    [Fact]
+    [Trait("Category", "Application")]
+    public async Task Oidc_token_validation_stamps_provider_claim_from_authority()
+    {
+        using ServiceProvider services = BuildServices();
+        OpenIdConnectOptions oidcOptions =
+            services.GetRequiredService<IOptionsMonitor<OpenIdConnectOptions>>()
+                .Get(HostAuthenticationConfiguration.OpenIdConnectScheme);
+        var identity = new ClaimsIdentity(
+            [new Claim(ClaimTypes.NameIdentifier, "subject-1")],
+            HostAuthenticationConfiguration.OpenIdConnectScheme);
+        var principal = new ClaimsPrincipal(identity);
+        var context = new TokenValidatedContext(
+            new DefaultHttpContext { RequestServices = services },
+            new AuthenticationScheme(
+                HostAuthenticationConfiguration.OpenIdConnectScheme,
+                HostAuthenticationConfiguration.OpenIdConnectScheme,
+                typeof(IAuthenticationHandler)),
+            oidcOptions,
+            principal,
+            new AuthenticationProperties());
+
+        await oidcOptions.Events.OnTokenValidated(context);
+
+        principal.FindFirst(AppSessionClaimTypes.Provider)?.Value.ShouldBe("http://localhost:8080/realms/commanddeck");
     }
 
     private static ServiceProvider BuildServices()

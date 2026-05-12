@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using CommandDeck.Host.Authentication;
 using CommandDeck.Host.Authorization;
 using CommandDeck.Host.Configuration;
 using CommandDeck.Host.Tests.Support;
@@ -62,7 +63,6 @@ public sealed class CookieApplicationAccessPolicyTests
             options.Assemblies = [typeof(ResolveCurrentUserCommand).Assembly];
         });
         builder.Services.RemoveAll<IPipelineBehavior<ResolveCurrentUserCommand, CurrentUserContext>>();
-        builder.Services.RemoveAll<IPipelineBehavior<GrantInitialApplicationAccessCommand, bool>>();
         builder.Services.AddSingleton<HostTestIdentityContext>();
         builder.Services.AddSingleton<ILocalUserRepository>(services => services.GetRequiredService<HostTestIdentityContext>());
         builder.Services.AddSingleton<IApplicationAccessRepository>(services => services.GetRequiredService<HostTestIdentityContext>());
@@ -77,7 +77,7 @@ public sealed class CookieApplicationAccessPolicyTests
             {
                 var identity = new ClaimsIdentity(
                     [
-                        new Claim("provider", "test"),
+                        new Claim(AppSessionClaimTypes.Provider, "test"),
                         new Claim(ClaimTypes.NameIdentifier, "subject-without-access"),
                     ],
                     HostAuthenticationConfiguration.CookieScheme);

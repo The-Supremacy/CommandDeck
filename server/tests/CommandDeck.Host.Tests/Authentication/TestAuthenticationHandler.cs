@@ -3,6 +3,7 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using CommandDeck.Host.Authentication;
 
 namespace CommandDeck.Host.Tests.Authentication;
 
@@ -36,7 +37,7 @@ public sealed class TestAuthenticationHandler(
 
         var claims = new List<Claim>
         {
-            new("provider", Request.Headers[ProviderHeader].FirstOrDefault() ?? "test"),
+            new(AppSessionClaimTypes.Provider, Request.Headers[ProviderHeader].FirstOrDefault() ?? "test"),
             new(ClaimTypes.NameIdentifier, subject.ToString()),
         };
 

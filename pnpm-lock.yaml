@@ -81,8 +81,8 @@ importers:
         specifier: 5.100.9
         version: 5.100.9(react@19.2.6)
       '@tanstack/react-router':
-        specifier: 1.169.8
-        version: 1.169.8(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 1.169.2
+        version: 1.169.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -103,8 +103,8 @@ importers:
         specifier: 5.100.9
         version: 5.100.9(react@19.2.6)
       '@tanstack/react-router':
-        specifier: 1.169.8
-        version: 1.169.8(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 1.169.2
+        version: 1.169.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -654,10 +654,9 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
-  '@tanstack/react-router@1.169.8':
-    resolution: {integrity: sha512-LTO9AovPd2Xx2mKY9ywn8zzSAkl+xkLy1KIOqhnjerFnwtXNIgISbCOuwSNcmZtMNlQXLW1Myutmxxus8GSmGg==}
+  '@tanstack/react-router@1.169.2':
+    resolution: {integrity: sha512-OJM7Kguc7ERnweaNRWsyWgIKcl3z23rD1B4jaxjzd9RGdnzpt2HfrWa9rggbT0Hfzhfo4D2ZmsfoTme035tniQ==}
     engines: {node: '>=20.19'}
-    deprecated: 'SECURITY: compromised release containing credential-stealing malware via optionalDependency @tanstack/setup. Do NOT install. Tracking: https://github.com/TanStack/router/issues/7383'
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
@@ -2442,7 +2441,7 @@ snapshots:
       '@tanstack/query-core': 5.100.9
       react: 19.2.6
 
-  '@tanstack/react-router@1.169.8(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@tanstack/react-router@1.169.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@tanstack/history': 1.161.6
       '@tanstack/react-store': 0.9.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)

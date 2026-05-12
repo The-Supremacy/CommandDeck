@@ -18,5 +18,5 @@ ServiceDefaults, shared persistence, SharedKernel primitives, Migrator wiring,
 and the initial Identity module boundary.
 
 `CommandDeck.Persistence` contains the concrete EF Core DbContext shell.
-`CommandDeck.Migrator` is the Host-owned migration entrypoint. The template
-does not include generated EF migrations.
+`CommandDeck.Migrator` is the Host-owned migration entrypoint and the
+setup-time initial-admin provisioning entrypoint.

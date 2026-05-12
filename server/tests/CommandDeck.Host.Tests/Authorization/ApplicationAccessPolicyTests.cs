@@ -56,7 +56,6 @@ public sealed class ApplicationAccessPolicyTests
             options.Assemblies = [typeof(ResolveCurrentUserCommand).Assembly];
         });
         builder.Services.RemoveAll<IPipelineBehavior<ResolveCurrentUserCommand, CurrentUserContext>>();
-        builder.Services.RemoveAll<IPipelineBehavior<GrantInitialApplicationAccessCommand, bool>>();
         builder.Services.AddSingleton<HostTestIdentityContext>();
         builder.Services.AddSingleton<ILocalUserRepository>(services => services.GetRequiredService<HostTestIdentityContext>());
         builder.Services.AddSingleton<IApplicationAccessRepository>(services => services.GetRequiredService<HostTestIdentityContext>());

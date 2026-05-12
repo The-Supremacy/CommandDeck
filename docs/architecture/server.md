@@ -18,8 +18,9 @@ Current direction:
 - `CommandDeckDbContext` implements narrow module persistence interfaces,
   including the Identity persistence surface for local users and application
   access.
-- The Migrator references the persistence project. The template does not
-  include generated EF migrations.
+- The Migrator references the persistence and Identity module projects. It
+  applies generated EF migrations, then runs explicit setup-time initial-admin
+  provisioning when configured.
 - SharedKernel contains only domain primitives at this gate: entity,
   aggregate-root, value-object, domain-event, and domain-exception base types.
 - Domain events are persisted by the shared DbContext into

@@ -3,9 +3,7 @@ using CommandDeck.Host.Configuration;
 using CommandDeck.Host.Authorization;
 using CommandDeck.Host.Features.Auth;
 using CommandDeck.Host.Features.CurrentUser;
-using CommandDeck.Host.HostedServices;
 using CommandDeck.Identity;
-using CommandDeck.Identity.Access;
 using CommandDeck.Identity.CurrentUser;
 using CommandDeck.Identity.Infrastructure;
 using CommandDeck.Identity.Infrastructure.Persistence;
@@ -32,10 +30,6 @@ builder.Services.AddMediator(options =>
         typeof(CommandTransactionBehavior<,>)
     ];
 });
-builder.Services
-    .AddOptions<InitialApplicationAccessOptions>()
-    .BindConfiguration("Identity:InitialApplicationAccess");
-builder.Services.AddHostedService<InitialApplicationAccessHostedService>();
 builder.Services.AddIdentityModule();
 builder.Services.AddIdentityInfrastructure();
 builder.Services.AddApplicationAccessAuthorization();

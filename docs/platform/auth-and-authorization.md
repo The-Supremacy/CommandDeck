@@ -17,7 +17,7 @@ Identity module responsibilities:
 - Translate authenticated OIDC principals into local user identities.
 - Store app-owned authorization records.
 - Provide current-user context.
-- Bootstrap one initial application admin.
+- Provide an explicit setup command for granting one initial application admin.
 
 The identity provider proves identity. The application decides product access.
 
@@ -37,6 +37,19 @@ by Identity contracts.
 API authentication failures return `401` without browser redirects. API
 authorization failures for authenticated users without active application-owned
 access return `403`.
+
+The Host never grants or repairs product authorization during startup.
+Initial-admin setup is a setup-time operation run by the Migrator after schema
+migrations, either from `Identity:InitialAdmin` configuration or the explicit
+command:
+
+```sh
+identity grant-admin --provider "<issuer>" --subject "<subject>" [--force]
+```
+
+Setup uses the provider/issuer and subject as provider-neutral identity keys.
+If access was manually revoked, setup fails until `--force` or
+`Identity:InitialAdmin:Force=true` is supplied.
 
 Custom request-header authentication is not production authentication. It exists
 only in backend tests as temporary verification scaffolding. It must not be

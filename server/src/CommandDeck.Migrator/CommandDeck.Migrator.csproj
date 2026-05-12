@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\modules\CommandDeck.Identity\CommandDeck.Identity.csproj" />
+    <ProjectReference Include="..\modules\CommandDeck.Identity.Infrastructure\CommandDeck.Identity.Infrastructure.csproj" />
     <ProjectReference Include="..\CommandDeck.Persistence\CommandDeck.Persistence.csproj" />
     <ProjectReference Include="..\CommandDeck.ServiceDefaults\CommandDeck.ServiceDefaults.csproj" />
   </ItemGroup>

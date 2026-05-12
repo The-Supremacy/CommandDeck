@@ -19,6 +19,8 @@ var keycloak = builder.AddKeycloak("keycloak", 8080, keycloakUsername, keycloakP
 
 var migrator = builder.AddProject<Projects.CommandDeck_Migrator>("migrator")
     .WithReference(database)
+    .WithEnvironment("Identity__InitialAdmin__Provider", "http://localhost:8080/realms/commanddeck")
+    .WithEnvironment("Identity__InitialAdmin__Subject", "00000000-0000-0000-0000-000000000001")
     .WaitFor(database);
 
 var host = builder.AddProject<Projects.CommandDeck_Host>("host")
@@ -30,8 +32,6 @@ var host = builder.AddProject<Projects.CommandDeck_Host>("host")
     .WithEnvironment("Authentication__Oidc__CallbackPath", "/auth/callback")
     .WithEnvironment("Authentication__Oidc__SignedOutCallbackPath", "/auth/signed-out")
     .WithEnvironment("Authentication__Oidc__RequireHttpsMetadata", "false")
-    .WithEnvironment("Identity__InitialApplicationAccess__Provider", "http://localhost:8080/realms/commanddeck")
-    .WithEnvironment("Identity__InitialApplicationAccess__Subject", "00000000-0000-0000-0000-000000000001")
     .WaitFor(database)
     .WaitFor(sessionTickets)
     .WaitFor(keycloak)

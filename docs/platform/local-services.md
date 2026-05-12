@@ -5,7 +5,7 @@ The template's current local platform uses Aspire and includes:
 - PostgreSQL for the Host-owned database.
 - Redis for BFF/session ticket storage.
 - Keycloak for local OpenID Connect authentication.
-- Migrator for applying Host-owned migrations.
+- Migrator for applying Host-owned migrations and initial-admin setup.
 - Host API.
 - Admin Vite app.
 - Web Vite app.
@@ -65,7 +65,7 @@ The checked-in Keycloak realm import includes local users for browser smoke
 testing:
 
 - `admin@example.test` / `Password123!` has initial application access through
-  the AppHost-provided bootstrap subject.
+  the AppHost-provided Migrator initial-admin setup subject.
 - `user@example.test` / `Password123!` can authenticate without application
   access.
 
@@ -74,10 +74,12 @@ Host HTTP endpoint. Their Vite development servers continue to proxy `/api/`
 and `/auth/` routes to the Host rather than calling identity-provider endpoints
 directly from browser code.
 
-The Migrator runs `CommandDeckDbContext` migrations during Aspire startup.
-This repository intentionally starts without generated EF migrations, so create
-and commit the initial migration before relying on the local platform to create
-the schema.
+The Migrator runs `CommandDeckDbContext` migrations during Aspire startup, then
+runs initial-admin setup when `Identity:InitialAdmin:Provider` and
+`Identity:InitialAdmin:Subject` are configured. Local Aspire passes those
+values to the Migrator, not the Host. Re-run setup with
+`Identity:InitialAdmin:Force=true` only when a revoked local admin access record
+should be intentionally reactivated.
 
 ## Browser Session Smoke
 

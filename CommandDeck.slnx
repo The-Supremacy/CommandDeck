@@ -16,6 +16,7 @@
     <Project Path="server/src/modules/CommandDeck.Identity/CommandDeck.Identity.csproj" />
   </Folder>
   <Folder Name="/server/tests/">
+    <Project Path="server/tests/CommandDeck.Migrator.Tests/CommandDeck.Migrator.Tests.csproj" />
     <Project Path="server/tests/CommandDeck.Host.Tests/CommandDeck.Host.Tests.csproj" />
   </Folder>
   <Folder Name="/server/tests/modules/">
