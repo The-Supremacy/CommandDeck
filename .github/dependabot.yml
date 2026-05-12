@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # For emergency security patches, make a deliberate one-off exception instead
+    # of lowering this global delay.
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "nuget"
     directory: "/"

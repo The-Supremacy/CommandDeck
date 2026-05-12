@@ -1,3 +1,7 @@
+# For emergency security patches, make a deliberate one-off exception instead of
+# lowering this global delay.
+minimumReleaseAge: 10080
+
 packages:
   - "web/apps/*"
   - "web/packages/*"
