@@ -42,7 +42,7 @@ public sealed class MigratorInitialAdminTests : IAsyncLifetime
 
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task Migrator_AppliesMigrationsAndGrantsInitialAdminFromConfiguration()
+    public async Task Migrator_WhenInitialAdminIsConfigured_AppliesMigrationsAndGrantsAccess()
     {
         MigratorRunResult result = await RunMigratorAsync(
             [],

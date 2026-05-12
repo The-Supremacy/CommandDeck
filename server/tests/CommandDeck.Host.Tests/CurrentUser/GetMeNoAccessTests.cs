@@ -10,7 +10,7 @@ public sealed class GetMeNoAccessTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_authenticated_current_user_without_application_access()
+    public async Task GetMe_WhenUserLacksApplicationAccess_ReturnsAuthenticatedCurrentUserWithoutApplicationAccess()
     {
         await using var factory = new HostApplicationFactory();
         using var client = factory.CreateClient();

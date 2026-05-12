@@ -12,7 +12,7 @@ public sealed class RedisTicketStoreTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Ticket_store_round_trips_and_removes_authentication_ticket()
+    public async Task TicketStore_WhenTicketIsStored_RoundTripsAndRemovesAuthenticationTicket()
     {
         using ServiceProvider services = new ServiceCollection()
             .AddDistributedMemoryCache()

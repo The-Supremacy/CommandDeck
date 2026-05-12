@@ -9,7 +9,7 @@ public sealed class AuthenticatedIdentityAdapterTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public void FromClaimsPrincipal_uses_provider_and_subject_as_identity_key()
+    public void FromClaimsPrincipal_WhenProviderAndSubjectArePresent_UsesProviderAndSubjectAsIdentityKey()
     {
         var principal = new ClaimsPrincipal(new ClaimsIdentity(
             [
@@ -27,7 +27,7 @@ public sealed class AuthenticatedIdentityAdapterTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public void FromClaimsPrincipal_returns_null_when_provider_is_missing()
+    public void FromClaimsPrincipal_WhenProviderIsMissing_ReturnsNull()
     {
         var principal = new ClaimsPrincipal(new ClaimsIdentity(
             [new Claim(ClaimTypes.NameIdentifier, "subject-1")],

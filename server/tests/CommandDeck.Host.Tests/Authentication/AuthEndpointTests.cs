@@ -64,7 +64,7 @@ public sealed class AuthEndpointTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Login_route_starts_oidc_challenge()
+    public async Task LoginRoute_WhenRequested_StartsOidcChallenge()
     {
         using var app = await CreateAuthHostAsync();
         using var client = app.GetTestClient();
@@ -82,7 +82,7 @@ public sealed class AuthEndpointTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Login_route_uses_forwarded_frontend_origin_for_oidc_callback()
+    public async Task LoginRoute_WhenFrontendOriginIsForwarded_UsesFrontendOriginForOidcCallback()
     {
         using var app = await CreateAuthHostAsync();
         using var client = app.GetTestClient();
@@ -102,7 +102,7 @@ public sealed class AuthEndpointTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Login_route_ignores_untrusted_absolute_return_url_for_oidc_callback()
+    public async Task LoginRoute_WhenReturnUrlIsUntrustedAbsoluteUrl_IgnoresReturnUrlForOidcCallback()
     {
         using var app = await CreateAuthHostAsync();
         using var client = app.GetTestClient();
@@ -119,7 +119,7 @@ public sealed class AuthEndpointTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Logout_route_starts_cookie_and_oidc_signout()
+    public async Task LogoutRoute_WhenRequested_StartsCookieAndOidcSignout()
     {
         using var app = await CreateAuthHostAsync();
         using var client = app.GetTestClient();

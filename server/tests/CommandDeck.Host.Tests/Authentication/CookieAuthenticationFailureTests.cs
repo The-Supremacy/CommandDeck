@@ -14,7 +14,7 @@ public sealed class CookieAuthenticationFailureTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Api_request_without_cookie_session_returns_unauthorized_without_login_redirect()
+    public async Task ApiRequest_WhenCookieSessionIsMissing_ReturnsUnauthorizedWithoutLoginRedirect()
     {
         using var app = await CreateApiHostAsync();
         using var client = app.GetTestClient();
@@ -29,7 +29,7 @@ public sealed class CookieAuthenticationFailureTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Api_request_with_invalid_cookie_session_returns_unauthorized_without_login_redirect()
+    public async Task ApiRequest_WhenCookieSessionIsInvalid_ReturnsUnauthorizedWithoutLoginRedirect()
     {
         using var app = await CreateApiHostAsync();
         using var client = app.GetTestClient();

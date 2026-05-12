@@ -17,6 +17,10 @@ Expected categories:
 - `Integration`
 - `Eval`
 
+Backend test method names should use `Subject_WhenCondition_ExpectedOutcome`.
+Use the behavior or API being exercised as the subject, the relevant state or
+event as the condition, and the observable result as the outcome.
+
 Integration tests should use real IO through Testcontainers rather than an
 in-memory persistence stack.
 

@@ -25,7 +25,7 @@ public sealed class CookieApplicationAccessPolicyTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Api_request_with_cookie_session_without_application_access_returns_forbidden_without_redirect()
+    public async Task ApiRequest_WhenCookieSessionLacksApplicationAccess_ReturnsForbiddenWithoutRedirect()
     {
         using var app = await CreateApiHostAsync();
         using var client = app.GetTestClient();
@@ -62,6 +62,7 @@ public sealed class CookieApplicationAccessPolicyTests
             options.ServiceLifetime = ServiceLifetime.Scoped;
             options.Assemblies = [typeof(ResolveCurrentUserCommand).Assembly];
         });
+        builder.Services.RemoveAll(typeof(IPipelineBehavior<,>));
         builder.Services.RemoveAll<IPipelineBehavior<ResolveCurrentUserCommand, CurrentUserContext>>();
         builder.Services.AddSingleton<HostTestIdentityContext>();
         builder.Services.AddSingleton<ILocalUserRepository>(services => services.GetRequiredService<HostTestIdentityContext>());

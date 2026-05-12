@@ -18,7 +18,7 @@ public sealed class HostAuthenticationConfigurationTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public void Host_authentication_uses_cookie_session_and_oidc_challenge_schemes()
+    public void HostAuthentication_WhenConfigured_UsesCookieSessionAndOidcChallengeSchemes()
     {
         using ServiceProvider services = BuildServices();
 
@@ -45,7 +45,7 @@ public sealed class HostAuthenticationConfigurationTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Oidc_token_validation_stamps_provider_claim_from_authority()
+    public async Task OidcTokenValidation_WhenPrincipalLacksProvider_StampsProviderClaimFromAuthority()
     {
         using ServiceProvider services = BuildServices();
         OpenIdConnectOptions oidcOptions =

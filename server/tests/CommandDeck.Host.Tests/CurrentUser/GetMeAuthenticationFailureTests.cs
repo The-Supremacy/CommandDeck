@@ -9,7 +9,7 @@ public sealed class GetMeAuthenticationFailureTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_unauthorized_when_provider_subject_is_blank()
+    public async Task GetMe_WhenProviderSubjectIsBlank_ReturnsUnauthorized()
     {
         await using var factory = new HostApplicationFactory();
         using var client = factory.CreateClient(new() { AllowAutoRedirect = false });

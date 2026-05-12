@@ -22,7 +22,7 @@ public sealed class ApplicationAccessPolicyTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task Protected_api_returns_forbidden_for_authenticated_user_without_application_access()
+    public async Task ProtectedApi_WhenAuthenticatedUserLacksApplicationAccess_ReturnsForbidden()
     {
         using var host = await CreateHostAsync();
         using var client = host.GetTestClient();
@@ -55,6 +55,7 @@ public sealed class ApplicationAccessPolicyTests
             options.ServiceLifetime = ServiceLifetime.Scoped;
             options.Assemblies = [typeof(ResolveCurrentUserCommand).Assembly];
         });
+        builder.Services.RemoveAll(typeof(IPipelineBehavior<,>));
         builder.Services.RemoveAll<IPipelineBehavior<ResolveCurrentUserCommand, CurrentUserContext>>();
         builder.Services.AddSingleton<HostTestIdentityContext>();
         builder.Services.AddSingleton<ILocalUserRepository>(services => services.GetRequiredService<HostTestIdentityContext>());

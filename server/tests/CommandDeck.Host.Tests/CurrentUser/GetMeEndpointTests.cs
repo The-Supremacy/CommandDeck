@@ -13,7 +13,7 @@ public sealed class GetMeEndpointTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_authenticated_current_user_with_application_access()
+    public async Task GetMe_WhenUserHasApplicationAccess_ReturnsAuthenticatedCurrentUserWithApplicationAccess()
     {
         var currentUserProvider = Substitute.For<ICurrentUserProvider>();
         currentUserProvider.GetCurrentUserAsync(

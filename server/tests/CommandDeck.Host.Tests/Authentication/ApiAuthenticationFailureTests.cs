@@ -9,7 +9,7 @@ public sealed class ApiAuthenticationFailureTests
 {
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_unauthorized_without_redirect_when_session_is_missing()
+    public async Task GetMe_WhenSessionIsMissing_ReturnsUnauthorizedWithoutRedirect()
     {
         await using var factory = new HostApplicationFactory();
         using var client = factory.CreateClient(new() { AllowAutoRedirect = false });
@@ -24,7 +24,7 @@ public sealed class ApiAuthenticationFailureTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_unauthorized_without_redirect_when_session_is_invalid()
+    public async Task GetMe_WhenSessionIsInvalid_ReturnsUnauthorizedWithoutRedirect()
     {
         await using var factory = new HostApplicationFactory();
         using var client = factory.CreateClient(new() { AllowAutoRedirect = false });
@@ -41,7 +41,7 @@ public sealed class ApiAuthenticationFailureTests
 
     [Fact]
     [Trait("Category", "Application")]
-    public async Task GetMe_returns_unauthorized_without_redirect_when_session_is_expired()
+    public async Task GetMe_WhenSessionIsExpired_ReturnsUnauthorizedWithoutRedirect()
     {
         await using var factory = new HostApplicationFactory();
         using var client = factory.CreateClient(new() { AllowAutoRedirect = false });
